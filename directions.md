@@ -7,11 +7,12 @@
    * Destination: Naganuma Park
    * Mode: Bicycling
    * Language: Japanese
-   
+
 # Vaid URL
 https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJYaKj0KYdGWARO6p6ilYYczM&destination=place_id:ChIJY2PSdn7iGGARHafx9ZRAPOw&waypoints=place_id:ChIJifjd04UdGWARI4KJ3ThIiYc&mode=bicyling&language=ja&key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y
 
 # JSON response
+```
 {
    "geocoded_waypoints" : [
       {
@@ -269,3 +270,4 @@ https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJYaKj0KY
    ],
    "status" : "OK"
 }
+```
