@@ -1,5 +1,15 @@
+# Place Details API Tutorial
+This example uses the Google Maps Platform Place Details API to provide details about the University of Iceland. 
+
+# URL Parameters
+* Place: University of Iceland
+* Fields (attributes retrieved): Name, Address, International Phone Number, Website, Photos
+
+# Valid URL
 https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ8xiavjAL1kgRn6jPteot6Bg&fields=name,formatted_address,international_phone_number,website,photo&key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y
 
+# JSON Response
+```
 {
    "html_attributions" : [],
    "result" : {
@@ -92,3 +102,4 @@ https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ8xiavjAL1kg
    },
    "status" : "OK"
 }
+```
