@@ -4,66 +4,16 @@
     <title>University of Iceland</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y&callback=initMap&libraries=places&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y&callback=placeMap&libraries=places&v=weekly"
       defer
     ></script>
-    <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <script>
-      function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: 64.14060855172188, lng: -21.949368330132092 },
-          zoom: 15,
-          mapTypeId: "hybrid",
-        });
-        const request = {
-          placeId: "ChIJBeb-7zAL1kgRc0e0hEM_GPs",
-          fields: ["name", "formatted_address", "international_phone_number", "website", "geometry"],
-        };
-        const infowindow = new google.maps.InfoWindow();
-        const service = new google.maps.places.PlacesService(map);
-        service.getDetails(request, (place, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            const marker = new google.maps.Marker({
-              map,
-              position: place.geometry.location,
-            });
-            google.maps.event.addListener(marker, "click", function () {
-              infowindow.setContent(
-                "<div><strong>" +
-                  place.name +
-                  "</strong><br>" +
-                  "Address: " +
-                  place.formatted_address +
-                  "<br>" +
-                  "Phone Number: " +
-                  place.international_phone_number +
-                  "<br>" +
-                  "Website: " +
-                  place.website +
-                  "</div>"
-              );
-              infowindow.open(map, this);
-            });
-          }
-        });
-      }
-    </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/script.js"></script>
   </head>
   <body>
-    <div id="map"></div>
+    <h1 id="title">University of Iceland</h1>
+    <p class="paragraph">Click on the marker for place details.</p>
+    <a href="https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ8xiavjAL1kgRn6jPteot6Bg&fields=name,formatted_address,international_phone_number,website,photo&key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y" target="_blank" class="paragraph">JSON Response</a>
+    <div class="mymap" id="map"></div>
   </body>
 </html>
