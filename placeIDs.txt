@@ -16,3 +16,19 @@ Place ID: ChIJvyZ0xe2V1kgRD3CcslPC8Ec
 Hveragerði
 Place ID: ChIJmwcg4rZm1kgRviuubzl-Fe4
 
+
+where you put something on your webpage matters - scripts, css, html, objects, etc.
+HTML doesn't know the id exists
+
+Script in the body - fetches and executes
+
+async - parsing and loading at the same time, waits to execute the script
+defer - waits until the whole page is loaded then executes the script
+
+Place references to libraries at the top of the webpage
+
+"let" declares a variable that exists only inside the script
+
+API is raw code that's accessed upon the wedpage loading
+map object is created with the function
+console allows you to grab things, change them (ex. change the zoome of the map), see what's in it
