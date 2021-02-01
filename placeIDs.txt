@@ -32,3 +32,7 @@ Place references to libraries at the top of the webpage
 API is raw code that's accessed upon the wedpage loading
 map object is created with the function
 console allows you to grab things, change them (ex. change the zoome of the map), see what's in it
+
+JSON response through directions and places API are middle tier
+
+src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&origin=place_id:ChIJc3O3OrV01kgRz8epHLF7TUU&destination=place_id:ChIJc3O3OrV01kgRz8epHLF7TUU&waypoints=place_id:ChIJe2kT-x-B1kgR8mKSB4tsdWs|place_id:ChIJKUjJPN2j1kgRTW1rruIPOPE|place_id:ChIJybZFr3Sl1kgRARZBC9tHYyw|place_id:ChIJvyZ0xe2V1kgRD3CcslPC8Ec|place_id:ChIJmwcg4rZm1kgRviuubzl-Fe4&mode=driving"
