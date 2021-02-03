@@ -2,12 +2,23 @@
 <html>
   <head>
     <title>Tokyo University of Technology</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&callback=directionsMap&libraries=&v=weekly"
+    defer
+  ></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/script.js"></script>
   </head>
   <body>
-    <h1 id="title">Tokyo University of Technology to Naganuma Park via Bicycle</h1>
+    <h1>Tokyo University of Technology to Naganuma Park via Bicycle</h1>
     <p class="paragraph">Along the way, stop at 7-Eleven for snacks!</p>
-    <a href="https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJYaKj0KYdGWARO6p6ilYYczM&destination=place_id:ChIJY2PSdn7iGGARHafx9ZRAPOw&waypoints=place_id:ChIJifjd04UdGWARI4KJ3ThIiYc&mode=bicyling&language=ja&key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y" target="_blank" class="paragraph">JSON Response</a>
-    <iframe class="mymap" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y&origin=place_id:ChIJYaKj0KYdGWARO6p6ilYYczM&destination=place_id:ChIJY2PSdn7iGGARHafx9ZRAPOw&waypoints=place_id:ChIJifjd04UdGWARI4KJ3ThIiYc&mode=bicycling&language=ja"></iframe>
+    <a href="https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJYaKj0KYdGWARO6p6ilYYczM&destination=place_id:ChIJY2PSdn7iGGARHafx9ZRAPOw&waypoints=place_id:ChIJifjd04UdGWARI4KJ3ThIiYc&mode=bicyling&language=ja&key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE" target="_blank" class="paragraph">JSON Response</a>
+    <h2>Using the Maps Embed API to show directions</h2>
+    <iframe class="mymap" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&origin=place_id:ChIJYaKj0KYdGWARO6p6ilYYczM&destination=place_id:ChIJY2PSdn7iGGARHafx9ZRAPOw&waypoints=place_id:ChIJifjd04UdGWARI4KJ3ThIiYc&mode=bicycling&language=ja"></iframe>
+    <h2>Using Directions Service in the Maps Javascript API to show directions</h2>
+    <p class="paragraph">Drag the markers around to change the origin (A), waypoint (B) and destination (C)!</p>
+    <div id="directionMap"></div>
+    <div id="right-panel"><p class="paragraph">Total Distance: <span id="total"></span></p></div>
   </body>
 </html>

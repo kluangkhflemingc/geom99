@@ -47,3 +47,57 @@ function placeMap() {
     }
   });
 }
+
+function directionsMap() {
+  const newmap = new google.maps.Map(document.getElementById("directionMap"), {
+    zoom: 15,
+    center: { lat: 35.62685855672777, lng: 139.34062175621025 },
+  });
+  const directionsService = new google.maps.DirectionsService(newmap);
+  const directionsRenderer = new google.maps.DirectionsRenderer({
+    draggable: true,
+    map: newmap,
+    panel: document.getElementById("right-panel"),
+  });
+  directionsRenderer.addListener("directions_changed", () => {
+    computeTotalDistance(directionsRenderer.getDirections());
+  });
+  displayRoute(
+    "Tokyo University of Technology",
+    "Naganuma Park",
+    directionsService,
+    directionsRenderer
+  );
+}
+
+function displayRoute(origin, destination, service, display) {
+  service.route(
+    {
+      origin: origin,
+      destination: destination,
+      waypoints: [
+        { location: "7-Eleven, Hachioji, Tokyo 192-0912 Japan" },
+      ],
+      travelMode: google.maps.TravelMode.BICYCLING,
+      avoidTolls: true,
+    },
+    (result, status) => {
+      if (status === "OK") {
+        display.setDirections(result);
+      } else {
+        alert("Could not display directions due to: " + status);
+      }
+    }
+  );
+}
+
+function computeTotalDistance(result) {
+  let total = 0;
+  const myroute = result.routes[0];
+
+  for (let i = 0; i < myroute.legs.length; i++) {
+    total += myroute.legs[i].distance.value;
+  }
+  total = total / 1000;
+  document.getElementById("total").innerHTML = total + " km";
+}
