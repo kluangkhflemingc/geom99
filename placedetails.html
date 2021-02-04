@@ -4,7 +4,7 @@
     <title>University of Iceland</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y&callback=placeMap&libraries=places&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&callback=placeMap&libraries=places&v=weekly"
       defer
     ></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -12,8 +12,11 @@
   </head>
   <body>
     <h1 id="title">University of Iceland</h1>
-    <p class="paragraph">Click on the marker for place details.</p>
-    <a href="https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ8xiavjAL1kgRn6jPteot6Bg&fields=name,formatted_address,international_phone_number,website,photo&key=AIzaSyBmwxOyg1ApXQKH4GCF4GNbSQVtrti4G4Y" target="_blank" class="paragraph">JSON Response</a>
+    <a href="https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ8xiavjAL1kgRn6jPteot6Bg&fields=name,formatted_address,international_phone_number,website,photo&key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE" target="_blank" class="paragraph">JSON Response</a>
+    <h2 id="title">Using the Places Library in Maps Javascript API to show place details</h2>
+    <p class="paragraph">Click on the marker for details about the University of Iceland.</p>
     <div class="mymap" id="map"></div>
+    <h2 id="title">Using Maps Embed API to display a marker at the University of Iceland</h2>
+    <iframe class="mymap" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&q=place_id:ChIJ8xiavjAL1kgRn6jPteot6Bg"></iframe>
   </body>
 </html>
