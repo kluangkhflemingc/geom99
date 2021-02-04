@@ -1,3 +1,4 @@
+markdown: kramdown
 # Google Lab Practical Tutorials
 This repository contains tutorials that were not explicitly asked to be saved in my Gmaps repository.
 
