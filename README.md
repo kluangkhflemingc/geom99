@@ -5,7 +5,7 @@ This repository contains tutorials that were not explicitly asked to be saved in
 * [Shark Spotters](https://kluangkhflemingc.github.io/geom99/mymapstutorial/sharkspotters.html)
 * [Repository Link](/mymapstutorial/sharkspotters.html)
 
-## JavaScript API (HTML Interative Map)
+## JavaScript API (HTML Interactive Map)
 * [Hello Seoul](https://kluangkhflemingc.github.io/geom99/helloseoul.html)
 * [Repository Link](helloseoul.html)
 
