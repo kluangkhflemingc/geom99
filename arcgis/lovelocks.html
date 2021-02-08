@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no="/>
+    <title>Love Lock Bridges Across Europe</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        h1 {
+            font-family: "Helvetica", Arial, sans-serif;
+            font-size: 30px;
+            text-align: center;
+        }
+        p {
+            font-family: "Helvetica", Arial, sans-serif;
+            font-size: 15px;
+            text-align: center;
+            margin-right: 10%;
+            margin-left: 10%;
+        }
+        #viewDiv {
+            margin-right: auto;
+            margin-left: auto;
+            height: 80%;
+            width: 80%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.18/"></script>
+    <script>
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function (esriConfig,Map,MapView, Graphic, GraphicsLayer) {
+            esriConfig.apiKey = "AAPK1bf3e4342116472cb37d416cfceec715lFEeOAyDsPRJEUDbbOvqB3VuWUo4qYTecKXZDI2TEBmeGYj5CfFrxKiArewBCr8R";
+            const map = new Map({
+                basemap: "arcgis-streets"
+            });
+            const view = new MapView({
+                map: map,
+                center: [23.353240678149465, 49.245988687698116],
+                zoom: 3,
+                container: "viewDiv"
+            });
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+            const multipoint = {
+                type: "multipoint",
+                points: [
+                    [20.893904800331075, 43.62094584680992], 
+                    [6.9657765057916325, 50.94154892492955],
+                    [-0.0753421153483354, 51.523400912936445],
+                    [14.40679243274005, 50.08643982862551],
+                    [14.508928626762819, 46.05129983651783],
+                    [13.04224971979276, 47.80232857220883],
+                    [23.582353069673236, 46.77234600464662],
+                ]
+            };
+            const simpleMarkerSymbol = {
+                type: "picture-marker",
+                url: "https://raw.githubusercontent.com/kluangkhflemingc/geom99/main/arcgis/images/padlock-bw.png",
+                width: "15px",
+                height: "20px"
+            };
+            const loveLocks = new Graphic({
+                geometry: multipoint,
+                symbol: simpleMarkerSymbol
+            });
+            graphicsLayer.add(loveLocks);
+        });
+    </script>
+</head>
+<body>
+    <h1>Love Is On The Bridge</h1>
+    <P>A love lock is a padlock that couples lock to a bridge, fence, gate or any other public fixture to symbolize love and commitment. 
+        Here are some bridges across Europe where couples can put a love lock... once it's safe to travel.</P>
+    <div id="viewDiv"></div>
+</body>
+</html>
