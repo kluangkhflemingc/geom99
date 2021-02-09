@@ -40,12 +40,13 @@
             });
             const view = new MapView({
                 map: map,
-                center: [23.353240678149465, 49.245988687698116],
-                zoom: 3,
+                center: [14.241405628488906, 47.56760933907621],
+                zoom: 4,
                 container: "viewDiv"
             });
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
+            // List of bridges taken from: https://travel-blue.com/magazine/love-lock-guide-romantic-bridges-across-europe/
             const multipoint = {
                 type: "multipoint",
                 points: [
