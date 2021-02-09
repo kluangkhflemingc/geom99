@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Cities in 3D
+    </title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.18//esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.18//"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .buttons {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+
+      }
+      .esri-button {
+        display: inline;
+        background-color: white;
+        min-width: 200px;
+        max-width: 300px;
+      }
+    </style>
+
+    <script>
+      require([
+  "esri/config",
+  "esri/Map",
+  "esri/views/SceneView",
+  "esri/layers/SceneLayer",
+  "esri/layers/FeatureLayer"
+], function (esriConfig,Map, SceneView, SceneLayer, FeatureLayer) {
+
+  esriConfig.apiKey = "AAPK1bf3e4342116472cb37d416cfceec715lFEeOAyDsPRJEUDbbOvqB3VuWUo4qYTecKXZDI2TEBmeGYj5CfFrxKiArewBCr8R";
+
+
+  const smallBuildings = new SceneLayer({
+    url:
+        "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Paris_3D_Local_WSL2/SceneServer",
+  }); 
+
+  const touristBuildings = new SceneLayer({
+    url:
+      "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Paris_3D_Local_WSL1/SceneServer",
+  });
+
+  // Create Map
+  var map = new Map({
+    basemap: "arcgis-navigation",
+    ground: "world-elevation",
+    layers: [smallBuildings, touristBuildings]
+  });
+
+  // Create the SceneView
+  var view = new SceneView({
+    container: "viewDiv",
+    map: map,
+    camera: {
+      position: [2.2952051412223624, 48.84735434430513, 1000],
+      tilt: 45,
+    },
+  });
+});
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
