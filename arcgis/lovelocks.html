@@ -13,21 +13,40 @@
         }
         h1 {
             font-family: "Helvetica", Arial, sans-serif;
-            font-size: 30px;
+            font-size: 25px;
             text-align: center;
         }
         p {
             font-family: "Helvetica", Arial, sans-serif;
-            font-size: 15px;
             text-align: center;
-            margin-right: 10%;
-            margin-left: 10%;
+            margin-right: 5%;
+            margin-left: 5%;
+            font-size: 15px;
+        }
+        li{
+            font-family: "Helvetica", Arial, sans-serif;
+            font-size: 15px;
+            margin-right: 5%;
+            font-weight: bold;
+        }
+        /* Side panel taken from: https://esri.github.io/hiking-trails-app/ */
+        .sidePanel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 25%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 0px 2px 1px rgba(100, 100, 100, 0.75);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         #viewDiv {
-            margin-right: auto;
-            margin-left: auto;
-            height: 80%;
-            width: 80%;
+            left: 0;
+            height: 100%;
+            width: 75%;
         }
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
@@ -42,43 +61,156 @@
             });
             const view = new MapView({
                 map: map,
-                center: [14.241405628488906, 47.56760933907621],
+                center: [10.241405628488906, 47.56760933907621],
                 zoom: 4,
                 container: "viewDiv"
             });
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
             // List of bridges taken from: https://travel-blue.com/magazine/love-lock-guide-romantic-bridges-across-europe/
-            const multipoint = {
-                type: "multipoint",
-                points: [
-                    [20.893904800331075, 43.62094584680992], 
-                    [6.9657765057916325, 50.94154892492955],
-                    [-0.0753421153483354, 51.523400912936445],
-                    [14.40679243274005, 50.08643982862551],
-                    [14.508928626762819, 46.05129983651783],
-                    [13.04224971979276, 47.80232857220883],
-                    [23.582353069673236, 46.77234600464662],
-                ]
-            };
             const padlockSymbol = {
                 type: "picture-marker",
                 url: "https://raw.githubusercontent.com/kluangkhflemingc/geom99/main/arcgis/images/padlock-bw.png",
                 width: "25px",
                 height: "25px"
             };
-            const loveLocks = new Graphic({
-                geometry: multipoint,
+            const popupTemplate = {
+                title: "{Name}",
+                content: "{Country}"
+            }
+            const ljubavi = {
+                type: "point",
+                longitude: 20.893904800331075,
+                latitude: 43.62094584680992
+            };
+            const ljubaviAttributes = {
+                Name: "Most Ljubavi",
+                Country: "Where the tradition began."
+            }
+            const ljubaviLock = new Graphic({
+                geometry: ljubavi,
                 symbol: padlockSymbol,
+                attributes: ljubaviAttributes,
+                popupTemplate: popupTemplate
             });
-            graphicsLayer.add(loveLocks);
+            const hohen = {
+                type: "point",
+                longitude: 6.9657765057916325,
+                latitude: 50.94154892492955
+            };
+            const hohenAttributes = {
+                Name: "Hohenzollern Bridge",
+                Country: "Cologne Tourism promotes this bridge as a 'pilgrimage destination for lovers'."
+            }
+            const hohenLock = new Graphic({
+                geometry: hohen,
+                symbol: padlockSymbol,
+                attributes: hohenAttributes,
+                popupTemplate: popupTemplate
+            });
+            const shoreditch = {
+                type: "point",
+                longitude: -0.0753421153483354,
+                latitude: 51.523400912936445
+            };
+            const shoreditchAttributes = {
+                Name: "Shoreditch High Street Station",
+                Country: "Authorities don't approve of people putting love locks on this bridge, but love makes us brave."
+            }
+            const shoreditchLock = new Graphic({
+                geometry: shoreditch,
+                symbol: padlockSymbol,
+                attributes: shoreditchAttributes,
+                popupTemplate: popupTemplate
+            });
+            const prague = {
+                type: "point",
+                longitude: 14.40679243274005,
+                latitude: 50.08643982862551
+            };
+            const pragueAttributes = {
+                Name: "John Lennon Wall",
+                Country: "One of the many love lock bridges in Prague."
+            }
+            const pragueLock = new Graphic({
+                geometry: prague,
+                symbol: padlockSymbol,
+                attributes: pragueAttributes,
+                popupTemplate: popupTemplate
+            });
+            const butcher = {
+                type: "point",
+                longitude: 14.508928626762819,
+                latitude: 46.05129983651783
+            };
+            const butcherAttributes = {
+                Name: "Butchers’ Bridge",
+                Country: "According to Visit Slovenia, this is Slovenia's 'love bridge'."
+            }
+            const butcherLock = new Graphic({
+                geometry: butcher,
+                symbol: padlockSymbol,
+                attributes: butcherAttributes,
+                popupTemplate: popupTemplate
+            });
+            const footbridge = {
+                type: "point",
+                longitude: 13.04224971979276,
+                latitude: 47.80232857220883
+            };
+            const footbridgeAttributes = {
+                Name: "Makartsteg Footbridge",
+                Country: "Authorities are constantly changing the rules, so make sure to double check online before you invest in a lock."
+            }
+            const footbridgeLock = new Graphic({
+                geometry: footbridge,
+                symbol: padlockSymbol,
+                attributes: footbridgeAttributes,
+                popupTemplate: popupTemplate
+            });
+            const cluj = {
+                type: "point",
+                longitude: 23.582353069673236,
+                latitude: 46.77234600464662
+            };
+            const clujAttributes = {
+                Name: "Elizabeth’s Bridge",
+                Country: "A bridge with a romantic history. At the beginning of the century soldiers used to meet their sweethearts on this bridge."
+            }
+            const clujLock = new Graphic({
+                geometry: cluj,
+                symbol: padlockSymbol,
+                attributes: clujAttributes,
+                popupTemplate: popupTemplate
+            });
+            graphicsLayer.add(ljubaviLock);
+            graphicsLayer.add(hohenLock);
+            graphicsLayer.add(shoreditchLock);
+            graphicsLayer.add(pragueLock);
+            graphicsLayer.add(butcherLock);
+            graphicsLayer.add(footbridgeLock);
+            graphicsLayer.add(clujLock);
         });
     </script>
 </head>
 <body>
-    <h1>Love Is On The Bridge</h1>
-    <P>A love lock is a padlock that couples lock to a bridge, fence, gate or any other public fixture to symbolize love and commitment. 
-        Here are some bridges across Europe where couples can "lock" their love... once it's safe to travel.</P>
+    <div class="sidePanel">
+        <h1>Love Is On The Bridge</h1>
+        <p>A love lock is a padlock that couples lock to a bridge, fence, gate or any other public fixture to symbolize love and commitment.</p>
+        <p>Arguably, the most famous love lock bridge is the Pont des Arts in Paris, France. In June 2014, part of the bridge collapsed under the weight of all the locks.
+            This lead authorities to cut and remove all the locks from the bridge.</p>
+        <p>Don't worry, here are 7 other bridges across Europe where couples can still "lock" their love... once it's safe to travel!</p>
+        <ul>
+            <li>Most Ljubavi | Vrnjačka Banja, Serbia</li>
+            <li>Hohenzollern Bridge | 
+                Cologne, Germany</li>
+            <li>Shoreditch High Street Station | London, England </li>
+            <li>John Lennon Wall | Prague, Czech Republic</li>
+            <li>Butchers’ Bridge | Ljubljana, Slovenia</li>
+            <li>Makartsteg Footbridge | Salzburg, Austria</li>
+            <li>Elizabeth’s Bridge | Cluj Napoca, Romania</li>
+        </ul>
+    </div>
     <div id="viewDiv"></div>
 </body>
 </html>
