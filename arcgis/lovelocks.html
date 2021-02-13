@@ -32,7 +32,7 @@
         /* Side panel taken from: https://esri.github.io/hiking-trails-app/ */
         .sidePanel {
             position: absolute;
-            right: 0;
+            left: 0;
             top: 0;
             bottom: 0;
             width: 25%;
@@ -44,7 +44,8 @@
             overflow: hidden;
         }
         #viewDiv {
-            left: 0;
+            position: absolute;
+            right: 0;
             height: 100%;
             width: 75%;
         }
@@ -197,8 +198,8 @@
     <div class="sidePanel">
         <h1>Love Is On The Bridge</h1>
         <p>A love lock is a padlock that couples lock to a bridge, fence, gate or any other public fixture to symbolize love and commitment.</p>
-        <p>Arguably, the most famous love lock bridge is the Pont des Arts in Paris, France. In June 2014, part of the bridge collapsed under the weight of all the locks.
-            This lead authorities to cut and remove all the locks from the bridge.</p>
+        <p>A famous love lock bridge is the Pont des Arts in Paris, France. In June 2014, part of the bridge collapsed under the weight of all the locks
+            which lead authorities to cut and remove all the locks from the bridge.</p>
         <p>Don't worry, here are 7 other bridges across Europe where couples can still "lock" their love... once it's safe to travel!</p>
         <ul>
             <li>Most Ljubavi | Vrnjačka Banja, Serbia</li>
@@ -209,6 +210,7 @@
             <li>Makartsteg Footbridge | Salzburg, Austria</li>
             <li>Elizabeth’s Bridge | Cluj Napoca, Romania</li>
         </ul>
+        <p>Click on each lock to find out more about the bridge.</p>
     </div>
     <div id="viewDiv"></div>
 </body>
