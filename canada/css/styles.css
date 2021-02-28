@@ -492,6 +492,7 @@ g#mapDiv_graphics_layer path {
   font-family: verdana, helvetica;
   font-weight: bold;
   -webkit-user-select: none;
+  user-select: none;
 }
 
 .esriSimpleSliderDecrementButton:hover,
