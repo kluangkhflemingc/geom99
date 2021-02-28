@@ -1,6 +1,6 @@
 define({
   appid: "",
-  webmap: "14ab61d83557477daac4e36fae8c992e",
+  webmap: "54a0c4f2c30a40658476ef5cf167068e",
   oauthappid: "arcgisWebApps",
   proxyurl: "",
   bingKey: "",
