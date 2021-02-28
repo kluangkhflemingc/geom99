@@ -11,12 +11,31 @@
             height: 100%;
             width: 100%;
         }
+        h1 {
+            font-family: "Helvetica", Arial, sans-serif;
+            font-size: 25px;
+            text-align: center;
+        }
+        p {
+            font-family: "Helvetica", Arial, sans-serif;
+            text-align: center;
+            margin-right: 5%;
+            margin-left: 5%;
+            font-size: 15px;
+        }
+        li{
+            font-family: "Helvetica", Arial, sans-serif;
+            font-size: 15px;
+            margin-right: 5%;
+            font-weight: bold;
+        }
         #viewDiv {
             position: absolute;
             right: 0;
             height: 100%;
             width: 75%;
         }
+        /* Side panel taken from: https://esri.github.io/hiking-trails-app/ */
         .sidePanel {
             position: absolute;
             left: 0;
@@ -37,7 +56,7 @@
         require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], function (esriConfig,Map,MapView,MapImageLayer) {
             esriConfig.apiKey = "AAPK1bf3e4342116472cb37d416cfceec715lFEeOAyDsPRJEUDbbOvqB3VuWUo4qYTecKXZDI2TEBmeGYj5CfFrxKiArewBCr8R";
             const map = new Map({
-                basemap: "arcgis-streets-night"
+                basemap: "arcgis-navigation-night"
             });
             const view = new MapView({
                 map: map,
@@ -45,7 +64,7 @@
                 zoom: 2,
                 container: "viewDiv"
             });
-            var statesRenderer = {
+            var provinceRenderer = {
                 type: "unique-value", // autocasts as new UniqueValueRenderer()
                 field: "PRNAME",
                 defaultSymbol: {
@@ -63,8 +82,9 @@
             sublayers: [
                 {
                 id: 0,
-                renderer: statesRenderer,
+                renderer: provinceRenderer,
                 opacity: 0.7,
+                // labelling sublayers for a Map Service: https://developers.arcgis.com/javascript/latest/sample-code/layers-mapimagelayer-dynamic-labels/
                 labelingInfo: [
                     {
                     labelExpression: "[PREABBR]",
@@ -80,8 +100,35 @@
                     minScale: 100000000,
                     maxScale: 9250000
                     }
+                ],
+                popupTemplate: {
+                // autocasts as new PopupTemplate()
+                // template taken from: https://developers.arcgis.com/javascript/latest/sample-code/layers-dynamicdatalayer-table-join/
+                title: "{PRNAME}",
+                content: [
+                  {
+                    type: "fields",
+                    fieldInfos: [
+                      {
+                        fieldName: "PREABBR",
+                        label: "English Abbreviation",
+                        visible: true,
+                      },
+                      {
+                        fieldName: "PRFABBR",
+                        label: "French Abbreviation",
+                        visible: true,
+                      },
+                      {
+                        fieldName: "PRUID",
+                        label: "Unique Identifier",
+                        visible: true,
+                      }
+                    ]
+                  }
                 ]
-                }
+              }
+            }
             ]
             });
             map.add(canada);
@@ -89,7 +136,13 @@
     </script>
 </head>
 <body>
-    <div class="sidePanel"></div>
+    <div class="sidePanel">
+        <h1>Provinces and Territories of Canada</h1>
+        <p>Here is a simple application that shows the 10 provinces and 3 territories of Canada.</p>
+        <p>Click on each province or territory to learn its English name and abbreviation, 
+            French name and abbreviation and unique identifier.</p>
+        <p>Below are some basic facts about each province and territory.</p>
+    </div>
     <div id="viewDiv"></div>
 </body>
 </html>
