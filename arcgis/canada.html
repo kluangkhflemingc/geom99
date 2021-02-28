@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>Provinces and Territories of Canada</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #viewDiv {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 75%;
+        }
+        .sidePanel {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 25%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 0px 2px 1px rgba(100, 100, 100, 0.75);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            overflow: scroll;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.18/"></script>
+    <script>
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], function (esriConfig,Map,MapView,MapImageLayer) {
+            esriConfig.apiKey = "AAPK1bf3e4342116472cb37d416cfceec715lFEeOAyDsPRJEUDbbOvqB3VuWUo4qYTecKXZDI2TEBmeGYj5CfFrxKiArewBCr8R";
+            const map = new Map({
+                basemap: "arcgis-streets-night"
+            });
+            const view = new MapView({
+                map: map,
+                center: [-96.39781131846817, 70.911027297633105],
+                zoom: 2,
+                container: "viewDiv"
+            });
+            var statesRenderer = {
+                type: "unique-value", // autocasts as new UniqueValueRenderer()
+                field: "PRNAME",
+                defaultSymbol: {
+                    type: "simple-fill", // autocasts as new SimpleFillSymbol()
+                    style: "none",
+                    outline: {
+                    width: 1,
+                    color: "white"
+                    }
+                },
+                label: "Province boundaries"
+            };
+        var canada = new MapImageLayer({
+            url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/kluangkhCanada/MapServer",
+            sublayers: [
+                {
+                id: 0,
+                renderer: statesRenderer,
+                opacity: 0.7,
+                labelingInfo: [
+                    {
+                    labelExpression: "[PREABBR]",
+                    labelPlacement: "always-horizontal",
+                    symbol: {
+                        type: "text", // autocasts as new TextSymbol()
+                        color: [255, 255, 255, 0.85],
+                        font: {
+                        size: 10,
+                        weight: "bold"
+                        }
+                    },
+                    minScale: 100000000,
+                    maxScale: 9250000
+                    }
+                ]
+                }
+            ]
+            });
+            map.add(canada);
+        });
+    </script>
+</head>
+<body>
+    <div class="sidePanel"></div>
+    <div id="viewDiv"></div>
+</body>
+</html>
