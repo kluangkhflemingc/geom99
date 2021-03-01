@@ -50,6 +50,8 @@
             overflow: scroll;
         }
     </style>
+    <!-- Maple Leaf icon available at: https://commons.wikimedia.org/wiki/File:Maple_leaf_--_Liberal.svg-->
+    <link rel="icon" href="images/mapleleaf.png">
     <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.18/"></script>
     <script>
@@ -78,6 +80,7 @@
                 label: "Province boundaries"
             };
             // add a map service: https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-MapImageLayer.html
+            // Map service from Luna server uploaded as a Map Image Layer (public, credentials saved with item) to ArcGIS Online (portal ID used)
         var canada = new MapImageLayer({
             portalItem: {
                 id: "08216b963c2245159e8ccf0017c159a8"
