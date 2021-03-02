@@ -60,7 +60,8 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.18/"></script>
     <script>
-        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], function (esriConfig,Map,MapView,MapImageLayer) {
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer", "esri/Graphic", "esri/layers/GraphicsLayer"], 
+        function (esriConfig,Map,MapView,MapImageLayer, Graphic, GraphicsLayer) {
             esriConfig.apiKey = "AAPK1bf3e4342116472cb37d416cfceec715lFEeOAyDsPRJEUDbbOvqB3VuWUo4qYTecKXZDI2TEBmeGYj5CfFrxKiArewBCr8R";
             const map = new Map({
                 basemap: "arcgis-navigation-night"
@@ -143,6 +144,36 @@
             ]
             });
             map.add(canada);
+            // Add multipoint graphics: https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Multipoint.html
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+            const capital = {
+                type: "simple-marker",
+                color: [255, 0, 0]
+            };
+            const cities = {
+                type: "multipoint",
+                points: [
+                    [-79.39586338113178, 43.65665818117731], 
+                    [-123.37669539706773, 48.45993109168261],
+                    [-113.49961723117264, 53.56607100178163],
+                    [-97.14261986400525, 49.875425502237704],
+                    [-66.64943087015155, 45.95856904157245],
+                    [-52.71193913879134, 47.56134307428894],
+                    [-114.38187833806445, 62.46802967107663],
+                    [-63.52604252300121, 44.663219843231566],
+                    [-68.52066639001069, 63.7481273067688],
+                    [-63.130147657217265, 46.24282429682933],
+                    [-71.3074707609121, 46.76716518781103],
+                    [-104.60723293883714, 50.46567049491428],
+                    [-135.06199733613397, 60.72079783537909],
+                ]
+            };
+            const pointGraphic = new Graphic({
+                geometry: cities,
+                symbol: capital
+            });
+            graphicsLayer.add(pointGraphic);
         });
     </script>
 </head>
